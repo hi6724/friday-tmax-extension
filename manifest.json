@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "friday-tmax",
+  "description": "금요일의 티붕이는 언제 퇴근할 수 있을까",
+  "version": "1.0",
+  "icons": {
+    "16": "images/16.ico",
+    "32": "images/32.png",
+    "48": "images/48.png",
+    "128": "images/128.png"
+  },
+  "action": {
+    "default_icon": "images/32.png",
+    "default_title": "friday-tmax",
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.tmax.co.kr/*"],
+      "js": [
+        "scripts/utils/date.js",
+        "scripts/utils/dom.js",
+        "scripts/index.js"
+      ],
+      "type": "module"
+    }
+  ]
+}
