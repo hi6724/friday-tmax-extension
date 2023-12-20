@@ -24,7 +24,7 @@ function main() {
       const startTime = tdElement[9].innerText;
       const endTime = tdElement[12].innerText;
       const isHoliday = tdElement[15].innerText;
-      const workTime = calculateTimeDifference(startTime, endTime, isHoliday);
+      const workTime = getWorkTime(startTime, endTime, isHoliday);
       tdElement[14].innerText = convertMinutesToHHMM(workTime);
 
       // 첫 element

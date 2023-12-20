@@ -1,4 +1,4 @@
-function createNewTr({ time }) {
+function createNewTr(time) {
   const newTr = document.createElement('tr');
   newTr.innerHTML = `
       <tr class="td01_data_C odd" style="cursor:default; line-height: 1.6;">
@@ -17,7 +17,9 @@ function createNewTr({ time }) {
         <td></td>
         <td></td>
         <td>총 ${convertMinutesToHHMM(time)}</td>
-        <td></td>
+        <td>퇴근까지 ${convertMinutesToHHMM(
+          calculateTimeDifference(convertMinutesToHHMM(time), '40:00')
+        )}</td>
         <td></td>
         <td></td>
         <td align="left"><div class="wrap"><textarea placeholder="비고란을 입력하세요." onkeyup="textareaResize(this)" style="width: 99%; height: auto;" value="" onchange="fn_update_remark(2,this.value)"></textarea></div></td>
