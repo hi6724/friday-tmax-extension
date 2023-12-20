@@ -20,6 +20,7 @@
       "js": [
         "scripts/utils/date.js",
         "scripts/utils/dom.js",
+        "scripts/utils/list.js",
         "scripts/index.js"
       ],
       "type": "module"

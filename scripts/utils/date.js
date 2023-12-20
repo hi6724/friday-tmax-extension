@@ -62,6 +62,13 @@ function calculateTimeDifference(startTime, endTime) {
   return endTotalMinutes - startTotalMinutes;
 }
 
+function calculateUpBo(todayWorkTime, times) {
+  const DEFAULT_WORK_TIME = 480 * times;
+  if (todayWorkTime > DEFAULT_WORK_TIME)
+    return `+${convertMinutesToHHMM(todayWorkTime - DEFAULT_WORK_TIME)}`;
+  return `-${convertMinutesToHHMM(DEFAULT_WORK_TIME - todayWorkTime)}`;
+}
+
 /**
  *
  * @param {시작시간} startTime

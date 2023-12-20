@@ -22,7 +22,8 @@ function createNewTr(time) {
         )}</td>
         <td></td>
         <td></td>
-        <td align="left"><div class="wrap"><textarea placeholder="비고란을 입력하세요." onkeyup="textareaResize(this)" style="width: 99%; height: auto;" value="" onchange="fn_update_remark(2,this.value)"></textarea></div></td>
+        <td></td>
+        <td align="left"><div class="wrap"><textarea placeholder="비고란을 입력하세요."></textarea></div></td>
         <input type="hidden" name="statusEmp" id="statusEmp" value="2023602">
         <input type="hidden" name="statusDate" id="statusDate" value="20231212">
         <input type="hidden" name="statusKind" id="statusKind" value="01">
