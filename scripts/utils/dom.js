@@ -17,9 +17,7 @@ function createNewTr(time) {
         <td></td>
         <td></td>
         <td>총 ${convertMinutesToHHMM(time)}</td>
-        <td>퇴근까지 ${convertMinutesToHHMM(
-          calculateTimeDifference(convertMinutesToHHMM(time), '40:00')
-        )}</td>
+        <td>남은업보 ${calculateUpBo(time, 5)}</td>
         <td></td>
         <td></td>
         <td></td>
