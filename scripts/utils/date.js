@@ -46,7 +46,6 @@ function convertMinutesToHHMM(minutes) {
 function convertHHMMToMinutes(dateString) {
   const [hours, minutes] = dateString.split(':').map(Number);
   const totalMinutes = hours * 60 + minutes;
-
   return totalMinutes;
 }
 
@@ -66,21 +65,33 @@ function calculateTimeDifference(startTime, endTime) {
  *
  * @param {시작시간} startTime
  * @param {끝나는시간} endTime
- * @param {반차여부} holiday
+ * @param {근태구분} holiday
  * @returns 오늘 근무한 시간을 분으로 환산한 값
  */
 function getWorkTime(startTime, endTime, holiday) {
   const MEAL_TIME = 60;
   const HALF_DAY_WORKTIME = 240;
+  const FULL_DAY_WORKTIME = 480;
   const endHours = endTime.split(':').map(Number)[0];
 
-  let workTime = calculateTimeDifference(startTime, endTime) - MEAL_TIME;
+  let workTime =
+    calculateTimeDifference(startTime, endTime, holiday) - MEAL_TIME;
+
   // 20시 이후 퇴근하면 저녁시간 1시간 추가로 제외
   if (endHours >= 20) workTime -= MEAL_TIME;
 
-  // 반차 시간 계산
-  if (holiday === '반차(오후)') workTime += HALF_DAY_WORKTIME;
-  if (holiday === '반차(오전)') workTime += HALF_DAY_WORKTIME + MEAL_TIME;
+  // 근태구분에 따른 시간 계산
+  if (holiday === '정상(수정)') workTime = FULL_DAY_WORKTIME;
+  if (holiday === '반차(오전)' || holiday === '공가(교육/훈련)(오전)')
+    workTime += HALF_DAY_WORKTIME + MEAL_TIME;
+  if (holiday === '반차(오후)' || holiday === '공가(교육/훈련)(오후)')
+    workTime += HALF_DAY_WORKTIME;
+  if (
+    holiday === '월차휴가' ||
+    holiday === '연차휴가' ||
+    holiday === '공가(교육/훈련)'
+  )
+    workTime += FULL_DAY_WORKTIME;
 
   return workTime;
 }
